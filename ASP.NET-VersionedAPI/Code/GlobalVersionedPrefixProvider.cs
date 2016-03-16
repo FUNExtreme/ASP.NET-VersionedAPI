@@ -22,32 +22,37 @@ namespace ASP.NET_VersionedAPI.Code
 
         protected override string GetRoutePrefix(HttpControllerDescriptor controllerDescriptor)
         {
+            string controllerName = controllerDescriptor.ControllerName;
+
             // This will store the version of the controller, if the name contains one
             string version = null;
 
             // Get route prefix defined in the controller
-            var existingPrefix = base.GetRoutePrefix(controllerDescriptor);
+            string controllerRoutePrefix = base.GetRoutePrefix(controllerDescriptor);
 
             // Extract the version number from our controller name
-            int versionLocation = controllerDescriptor.ControllerName.LastIndexOf("V");
+            int versionLocation = controllerName.LastIndexOf("V");
             if (versionLocation != -1)
             {
-                versionLocation += "V".Length;
-                version = controllerDescriptor.ControllerName.Substring(versionLocation);
+                version = controllerName.Substring(versionLocation + "V".Length);
 
                 // Check if it's a valid version number
                 foreach (char c in version)
                 {
                     if (!char.IsDigit(c) && c != 'd') // We allow 'd' as a replacement for . (dot)
-                        return CreateRoutePrefix(_prefix, null, existingPrefix);
+                        return CreateRoutePrefix(_prefix, null, controllerRoutePrefix);
                 }
 
                 // We want the version number seperated by dots
                 version = version.Replace('d', '.');
             }
 
+            // If no route prefix was specified using the RoutePrefix attribute, we use the controller name
+            if (controllerRoutePrefix == null || controllerRoutePrefix.Trim().Length == 0)
+                controllerRoutePrefix = controllerName.Substring(0, versionLocation);
+
             // Return the global route prefix
-            return CreateRoutePrefix(_prefix, version, existingPrefix);
+            return CreateRoutePrefix(_prefix, version, controllerRoutePrefix);
         }
 
         /// <summary>

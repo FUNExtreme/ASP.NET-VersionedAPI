@@ -12,6 +12,8 @@ namespace ASP.NET_VersionedAPI.Code
     {
         // Users
         List<string> GetUsers();
+        string GetUser(int userId);
+
         void AddUser(string fullName);
     }
 }

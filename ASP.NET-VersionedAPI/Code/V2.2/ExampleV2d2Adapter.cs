@@ -30,6 +30,19 @@ namespace ASP.NET_VersionedAPI.Code.V2._2
         }
 
         /// <summary>
+        /// Returns a single user
+        /// </summary>
+        /// <param name="userId">The ID of the user to retrieve</param>
+        /// <returns>The full name of the single user, or null if not found</returns>
+        public string GetUser(int userId)
+        {
+            if (userId < 0 && userId >= _users.Count)
+                return null;
+
+            return _users[userId];
+        }
+
+        /// <summary>
         /// Returns a list of all users
         /// </summary>
         /// <returns>A list of all users</returns>
