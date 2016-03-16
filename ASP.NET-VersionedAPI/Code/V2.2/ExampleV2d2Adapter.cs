@@ -46,7 +46,7 @@ namespace ASP.NET_VersionedAPI.Code.V2._2
         /// Returns a list of all users
         /// </summary>
         /// <returns>A list of all users</returns>
-        public List<string> GetUsers()
+        public IEnumerable<string> GetUsers()
         {
             return _users;
         }

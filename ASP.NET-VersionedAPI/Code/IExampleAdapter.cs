@@ -11,7 +11,7 @@ namespace ASP.NET_VersionedAPI.Code
     public interface IExampleAdapter
     {
         // Users
-        List<string> GetUsers();
+        IEnumerable<string> GetUsers();
         string GetUser(int userId);
 
         void AddUser(string fullName);

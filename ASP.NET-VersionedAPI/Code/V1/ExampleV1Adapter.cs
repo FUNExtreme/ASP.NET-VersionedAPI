@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ASP.NET_VersionedAPI.Code.V1
 {
@@ -38,7 +37,7 @@ namespace ASP.NET_VersionedAPI.Code.V1
         /// Returns a list of all users
         /// </summary>
         /// <returns>A list of all users</returns>
-        public List<string> GetUsers()
+        public IEnumerable<string> GetUsers()
         {
             return _users;
         }
