@@ -1,7 +1,14 @@
 # ASP.NET Versioned API
 
 ## Introduction
-The project in this repository provides a bare-bones sample implementation of a versioned API. It implements a custom written GlobalVersionedPrefixProvider and shows how to use an adapter pattern to easily maintain multiple versions of an API within one single project.
+The project in this repository provides a `GlobalVersionedPrefixProvider` provider and a bare-bones sample implementation of a versioned API with this provider. It implements a custom written GlobalVersionedPrefixProvider and shows how to use an adapter pattern to easily maintain multiple versions of an API within one single project.
+
+## Contents
+### src
+The source folder contains the `GlobalVersionedPrefixProvider.cs` file, you can copy paste the contents of this class at will and use it wherever you please. If you are so kind attribution to "Robin Maenhaut" is always nice :smile:
+
+### sample
+The sample project provides a bare-bones implementation of the `GlobalVersionedPrefixProvider` as well as an adapter pattern implementation to handle changing data sources or required changes in the business logic.
 
 ## Implementation
 ### GlobalVersionedPrefixProvider
