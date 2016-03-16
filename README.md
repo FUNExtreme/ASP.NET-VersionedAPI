@@ -22,8 +22,19 @@ For example `config.MapHttpAttributeRoutes(new GlobalVersionedPrefixProvider("ap
 ### Controller Naming convention
 As structured developers we like to give our classes meaningful names. When considering a REST API that can return a list of users we may consider using a name like `UsersController` with a GET method that returns all users. When working with a versioned API we can change this name to be `UsersV1Controller` followed by `UsersV2Controller`.
 
-This is where the `GlobalVersionedPrefixProvider` steps in again. The provider reads the controller names and extracts the version number.
-For example `UsersV2Controller` with a global prefix `api` will produce the URI `<host>/api/v2/users`.
+This is where the `GlobalVersionedPrefixProvider` steps in again. The provider maps the controller to a certain URI.
+There are two ways to influence the URI that'll be generated. 
+
+1. Using the RoutePrefix attribute
+2. Based on the controller name
+
+#### RoutePrefix Attribute
+ASP.NET provides a `RoutePrefix` attribute that can be used on a class, if present the provider will use the specified prefix.
+For example `UsersV2Controller` with a global prefix `api` and route prefix `zombies` will produce the URI `<host>/api/v2/zombies`.
+
+#### Controller Name
+If no `RoutePrefix` attribute is present the provider will read the route from the controller name. The part in front of the version number is considered the controller URI.
+For example `UsersV2Controller` with a global prefix `api` and no route prefix will produce the URI `<host>/api/v2/users`.
 
 ---
 
