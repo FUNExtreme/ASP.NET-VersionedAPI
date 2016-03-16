@@ -7,6 +7,7 @@ namespace ASP.NET_VersionedAPI.Code
     /// Allows for easy versioning of an API by extracting the version number from the controller name and using it in the url
     /// 
     /// Versioning syntax: a controller for version 1.2.4 becomes <name>V1d2d4Controller
+    /// We use a 'd' instead of a . in the controller name because dots do not work well within class names
     /// </summary>
     public class GlobalVersionedPrefixProvider : DefaultDirectRouteProvider
     {

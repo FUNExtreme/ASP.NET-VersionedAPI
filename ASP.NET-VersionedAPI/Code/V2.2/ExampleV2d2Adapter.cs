@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 namespace ASP.NET_VersionedAPI.Code.V2._2
 {
+    /// <summary>
+    /// Example implementation of IExampleAdapter
+    /// To obtain the adapter for the new version, the previous version is copied and changed where needed
+    /// The idea is to have an exact copy that conforms to the previous version, after which the version specific changes are made
+    /// </summary>
     public class ExampleV2d2Adapter : IExampleAdapter
     {
         private List<string> _users = new List<string>

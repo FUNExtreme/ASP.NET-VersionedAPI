@@ -2,6 +2,9 @@
 
 namespace ASP.NET_VersionedAPI.Code.V1
 {
+    /// <summary>
+    /// Example implementation of the IExampleAdapter
+    /// </summary>
     public class ExampleV1Adapter : IExampleAdapter
     {
         private List<string> _users = new List<string>
